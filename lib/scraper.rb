@@ -34,5 +34,4 @@ class Scraper
     profile_hash[:bio] = web_data.css(".description-holder p").text
     profile_hash
   end
-
 end
