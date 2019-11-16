@@ -22,12 +22,14 @@ class Scraper
 
   def self.scrape_profile_page(profile_url)
     profile_hash = {}
+    twitter, linkedin, github, blog = nil
     web_data = Nokogiri::HTML(open(profile_url))
 
     #need to redo based on name search...
 
     web_data.css(".social-icon-container a").each do |item|
       binding.pry
+
 
     end
 
