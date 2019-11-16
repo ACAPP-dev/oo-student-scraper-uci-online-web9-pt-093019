@@ -23,7 +23,7 @@ class Scraper
   def self.scrape_profile_page(profile_url)
     profile_hash = {}
     web_data = Nokogiri::HTML(open(profile_url))
-    binding.pry
+  
     #need to redo based on name search...
 
     web_data.css(".social-icon-container a").each do |item|
@@ -32,20 +32,20 @@ class Scraper
     end
 
 
-    twitter = web_data.css(".social-icon-container a")[0].attribute("href").value if web_data.css(".social-icon-container a")[0]
-    linkedin = web_data.css(".social-icon-container a")[1].attribute("href").value if web_data.css(".social-icon-container a")[1]
-    github = web_data.css(".social-icon-container a")[2].attribute("href").value if web_data.css(".social-icon-container a")[2]
-    blog = web_data.css(".social-icon-container a")[3].attribute("href").value if web_data.css(".social-icon-container a")[3]
-    profile_quote = web_data.css(".profile-quote").text
-    bio = web_data.css(".description-holder p").text
+    #twitter = web_data.css(".social-icon-container a")[0].attribute("href").value if web_data.css(".social-icon-container a")[0]
+    #linkedin = web_data.css(".social-icon-container a")[1].attribute("href").value if web_data.css(".social-icon-container a")[1]
+    #github = web_data.css(".social-icon-container a")[2].attribute("href").value if web_data.css(".social-icon-container a")[2]
+    #blog = web_data.css(".social-icon-container a")[3].attribute("href").value if web_data.css(".social-icon-container a")[3]
+    #profile_quote = web_data.css(".profile-quote").text
+    #bio = web_data.css(".description-holder p").text
 
-    profile_hash = {:twitter => twitter,
-                    :linkedin => linkedin,
-                    :github => github,
-                    :blog => blog,
-                    :profile_quote => profile_quote,
-                    :bio => bio}
-    profile_hash.keep_if {|key, value| value}
+    #profile_hash = {:twitter => twitter,
+    #                :linkedin => linkedin,
+    #                :github => github,
+    #                :blog => blog,
+    #                :profile_quote => profile_quote,
+  #                  :bio => bio}
+  #  profile_hash.keep_if {|key, value| value}
 
       #binding.pry
   end
