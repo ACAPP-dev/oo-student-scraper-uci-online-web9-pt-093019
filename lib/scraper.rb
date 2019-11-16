@@ -26,6 +26,10 @@ class Scraper
     binding.pry
     #need to redo based on name search...
 
+    web_data.css(".social-icon-container a").each do |item|
+      binding.pry
+
+    end
 
 
     twitter = web_data.css(".social-icon-container a")[0].attribute("href").value if web_data.css(".social-icon-container a")[0]
