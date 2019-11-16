@@ -28,8 +28,18 @@ class Scraper
     #need to redo based on name search...
 
     web_data.css(".social-icon-container a").each do |item|
-      binding.pry
-      twitter = item.attributes["href"].value if item.attributes["href"].value.include?("twitter")
+
+      link = item.attributes["href"].value
+      if link.include?("twitter")
+        twitter = link
+      elsif link.include?("linkedin")
+        linkedin = link
+      elsif link.include?("github")
+        github = link
+      else
+        blog = link
+      end
+        binding.pry
 
     end
 
