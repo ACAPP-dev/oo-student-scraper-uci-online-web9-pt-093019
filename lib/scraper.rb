@@ -24,41 +24,22 @@ class Scraper
     profile_hash = {}
     web_data = Nokogiri::HTML(open(profile_url))
 
-    #need to redo based on name search...
-
     web_data.css(".social-icon-container a").each do |item|
-
       link = item.attributes["href"].value
       if link.include?("twitter")
-        profile_hash[twitter] = link
+        profile_hash[:twitter] = link
       elsif link.include?("linkedin")
-        profile_hash[linkedin] = link
+        profile_hash[:linkedin] = link
       elsif link.include?("github")
-        profile_hash[github] = link
+        profile_hash[:github] = link
       else
-        profile_hash[blog] = link
+        profile_hash[:blog] = link
       end
-        binding.pry
-
     end
+    profile_hash[:profile_quote] = web_data.css(".profile-quote").text
+    profile_hash[:bio] = web_data.css(".description-holder p").text
 
-
-    #twitter = web_data.css(".social-icon-container a")[0].attribute("href").value if web_data.css(".social-icon-container a")[0]
-    #linkedin = web_data.css(".social-icon-container a")[1].attribute("href").value if web_data.css(".social-icon-container a")[1]
-    #github = web_data.css(".social-icon-container a")[2].attribute("href").value if web_data.css(".social-icon-container a")[2]
-    #blog = web_data.css(".social-icon-container a")[3].attribute("href").value if web_data.css(".social-icon-container a")[3]
-    #profile_quote = web_data.css(".profile-quote").text
-    #bio = web_data.css(".description-holder p").text
-
-    #profile_hash = {:twitter => twitter,
-    #                :linkedin => linkedin,
-    #                :github => github,
-    #                :blog => blog,
-    #                :profile_quote => profile_quote,
-  #                  :bio => bio}
-  #  profile_hash.keep_if {|key, value| value}
-
-      #binding.pry
+    binding.pry
   end
 
 end
