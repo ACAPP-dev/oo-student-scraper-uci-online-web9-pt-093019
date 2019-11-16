@@ -29,7 +29,7 @@ class Scraper
 
     web_data.css(".social-icon-container a").each do |item|
       binding.pry
-
+      twitter = item.attributes["href"].value if item.attributes["href"].value.include?("twitter")
 
     end
 
