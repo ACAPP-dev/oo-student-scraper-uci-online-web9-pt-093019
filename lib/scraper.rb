@@ -26,7 +26,7 @@ class Scraper
     binding.pry
     #need to redo based on name search...
 
-    
+
 
     twitter = web_data.css(".social-icon-container a")[0].attribute("href").value if web_data.css(".social-icon-container a")[0]
     linkedin = web_data.css(".social-icon-container a")[1].attribute("href").value if web_data.css(".social-icon-container a")[1]
