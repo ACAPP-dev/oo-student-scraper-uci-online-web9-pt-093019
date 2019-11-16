@@ -11,19 +11,13 @@ class Scraper
       location = student.css(".student-location").text
       profile_url = student.css("a").attribute("href").value
       student_array << {:name => name, :location => location, :profile_url => profile_url}
-      #binding.pry
     end
     student_array
-    #name = web_data.css(".student-name")[0].text
-    #location = web_data.css(".student-location")[0].text
-    #profile_url = web_data.css(".student-card")[0].css("a")[0].values
-
   end
 
   def self.scrape_profile_page(profile_url)
     profile_hash = {}
     web_data = Nokogiri::HTML(open(profile_url))
-
     web_data.css(".social-icon-container a").each do |item|
       link = item.attributes["href"].value
       if link.include?("twitter")
@@ -38,7 +32,6 @@ class Scraper
     end
     profile_hash[:profile_quote] = web_data.css(".profile-quote").text
     profile_hash[:bio] = web_data.css(".description-holder p").text
-
     profile_hash
   end
 
