@@ -39,7 +39,7 @@ class Scraper
     profile_hash[:profile_quote] = web_data.css(".profile-quote").text
     profile_hash[:bio] = web_data.css(".description-holder p").text
 
-    binding.pry
+    profile_hash
   end
 
 end
